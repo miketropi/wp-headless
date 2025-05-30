@@ -22,7 +22,9 @@ services:
         define('JWT_AUTH_SECRET_KEY', '${JWT_AUTH_SECRET_KEY}');
         define('JWT_AUTH_CORS_ENABLE', '${JWT_AUTH_CORS_ENABLE}');
         define('WP_ENVIRONMENT_TYPE', '${WP_ENVIRONMENT_TYPE}');
-        define('WP_DEBUG', ${WP_DEBUG:-false});
+        if (!defined('WP_DEBUG')) {
+          define('WP_DEBUG', ${WP_DEBUG:-true});
+        }
     volumes:
       - ./wp-content:/var/www/html/wp-content
       - ./.htaccess:/var/www/html/.htaccess
