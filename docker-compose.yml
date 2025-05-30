@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8888:80"
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
+      WORDPRESS_REDIS_HOST: ${WORDPRESS_REDIS_HOST}
+      WORDPRESS_REDIS_PORT: ${WORDPRESS_REDIS_PORT}
+      WORDPRESS_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '256M');
+        define('WP_MAX_MEMORY_LIMIT', '512M');
+        define('UPLOAD_MAX_FILESIZE', '256M');
+        define('POST_MAX_SIZE', '256M');
+        define('JWT_AUTH_SECRET_KEY', '${JWT_AUTH_SECRET_KEY}');
+        define('JWT_AUTH_CORS_ENABLE', '${JWT_AUTH_CORS_ENABLE}');
+        define('WP_ENVIRONMENT_TYPE', '${WP_ENVIRONMENT_TYPE}');
+        define('WP_DEBUG', ${WP_DEBUG:-false});
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./.htaccess:/var/www/html/.htaccess
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - wordpress_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/wp-login.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes
+    networks:
+      - wordpress_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  redis_data:
+    driver: local
+
+networks:
+  wordpress_network:
+    driver: bridge

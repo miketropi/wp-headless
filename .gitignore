@@ -1,0 +1,10 @@
+.env
+/wp-content/uploads/*
+/wp-content/plugins/*
+/wp-content/upgrade/
+/wp-content/upgrade-temp-backup/ 
+/wp-content/themes/*
+!wp-content/themes/twentytwentyfive
+/wp-content/object-cache.php
+/wp-content/advanced-cache.php
+/wp-content/redis-cache/
