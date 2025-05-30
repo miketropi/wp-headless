@@ -11,9 +11,6 @@ services:
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
       WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
-      WORDPRESS_REDIS_HOST: ${WORDPRESS_REDIS_HOST}
-      WORDPRESS_REDIS_PORT: ${WORDPRESS_REDIS_PORT}
-      WORDPRESS_REDIS_PASSWORD: ${REDIS_PASSWORD}
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '256M');
         define('WP_MAX_MEMORY_LIMIT', '512M');
@@ -22,6 +19,9 @@ services:
         define('JWT_AUTH_SECRET_KEY', '${JWT_AUTH_SECRET_KEY}');
         define('JWT_AUTH_CORS_ENABLE', '${JWT_AUTH_CORS_ENABLE}');
         define('WP_ENVIRONMENT_TYPE', '${WP_ENVIRONMENT_TYPE}');
+        define('WP_REDIS_HOST', ${REDIS_HOST}');
+        define('WP_REDIS_PORT', 6379);
+        define('WP_REDIS_PASSWORD', '${REDIS_PASSWORD}');
         if (!defined('WP_DEBUG')) {
           define('WP_DEBUG', ${WP_DEBUG:-true});
         }
