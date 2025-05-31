@@ -87,6 +87,26 @@ docker-compose down -v
 
 ---
 
+## Required Plugins (Please install manually)
+
+The following plugins are required for this setup:
+
+1. [Redis Object Cache](https://wordpress.org/plugins/redis-cache/)
+   - Provides persistent object caching using Redis
+   - Improves WordPress performance
+   - Configured automatically via environment variables
+
+2. [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
+   - Enables JWT authentication for the WordPress REST API
+   - Required for secure API authentication
+   - Configured via environment variables:
+     - `JWT_AUTH_SECRET_KEY`
+     - `JWT_AUTH_CORS_ENABLE`
+
+Install these plugins through the WordPress admin panel or place them in the `wp-content/plugins` directory.
+
+---
+
 ## Troubleshooting
 
 - Ensure all environment variables are set in `.env`.

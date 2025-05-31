@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   wordpress:
     build:
@@ -65,4 +63,4 @@ volumes:
 
 networks:
   wordpress_net:
-    external: true
+    # external: true
