@@ -1,6 +1,7 @@
 .env
 /wp-content/uploads/*
 /wp-content/plugins/*
+!/wp-content/plugins/wp-headless-helpers
 /wp-content/upgrade/
 /wp-content/upgrade-temp-backup/ 
 /wp-content/themes/*
