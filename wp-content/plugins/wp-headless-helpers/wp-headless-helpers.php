@@ -3,7 +3,7 @@
  * Plugin Name: WP Headless Helpers.
  * Plugin URI: 
  * Description: Helper functions and utilities for headless WordPress setup
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: @Mike
  * Author URI: #
  * License: GPL v2 or later
