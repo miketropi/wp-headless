@@ -89,6 +89,9 @@ class WP_Headless_User_Registration {
             return $user_id;
         }
 
+        // create hook after user creation
+        do_action('wp_headless_after_user_register', $user_id, $username, $email, $password);
+
         // Set user role
         $user = new WP_User($user_id);
         $user->set_role('subscriber');
