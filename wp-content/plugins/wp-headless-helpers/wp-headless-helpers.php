@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name: WP Headless Helpers
+ * Plugin Name: WP Headless Helpers.
  * Plugin URI: 
  * Description: Helper functions and utilities for headless WordPress setup
  * Version: 1.0.0
