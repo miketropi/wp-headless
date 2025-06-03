@@ -1,4 +1,4 @@
-# Headless WordPress Docker Environment..
+# Headless WordPress Docker Environment...
 
 ## Description
 This project provides a Docker-based environment for running WordPress, suitable for headless setups. It includes Redis for caching and is easily configurable via environment variables.
