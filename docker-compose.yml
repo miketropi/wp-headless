@@ -27,7 +27,7 @@ services:
           define('WP_DEBUG', ${WP_DEBUG:-true});
         }
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      # - ./wp-content:/var/www/html/wp-content
     depends_on:
       redis:
         condition: service_healthy
