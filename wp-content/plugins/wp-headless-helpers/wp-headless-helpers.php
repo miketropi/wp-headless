@@ -17,8 +17,12 @@ if (!defined('WPINC')) {
     die;
 }
 
+// require composer autoload.php
+require_once plugin_dir_path(__FILE__). 'vendor/autoload.php';
+
 // Include the user registration functionality
 require_once plugin_dir_path(__FILE__). 'inc/helpers.php';
 require_once plugin_dir_path(__FILE__). 'inc/hooks.php';
 
+require_once plugin_dir_path(__FILE__). 'inc/user.php';
 require_once plugin_dir_path(__FILE__) . 'inc/user-register.php';
