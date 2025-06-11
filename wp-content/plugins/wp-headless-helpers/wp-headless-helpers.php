@@ -26,3 +26,5 @@ require_once plugin_dir_path(__FILE__). 'inc/hooks.php';
 
 require_once plugin_dir_path(__FILE__). 'inc/user.php';
 require_once plugin_dir_path(__FILE__) . 'inc/user-register.php';
+
+require_once plugin_dir_path(__FILE__). 'inc/post.php';
